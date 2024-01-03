@@ -2,7 +2,8 @@ let firstNumber = 0
 let secondNumber = 0
 let firstOperator = null
 let afterFirstOperation = false
-let result = -1
+// let result = -1
+let resultFlag = false
 let lastButtonTypeClicked = null
 const monitor = document.querySelector('#monitor')
 const monitorDisplay = monitor.querySelector('p')
@@ -26,6 +27,10 @@ ourContainer.addEventListener('click', (element) => {
 const addToScreen = (item) => {
 
 	if (isNumber(item)) {
+		if(resultFlag) {
+			monitorDisplay.textContent = ''
+			resultFlag = false
+		}
 		monitorDisplay.textContent.includes('.') && whichNumber(item) === '.' ? '' : (monitorDisplay.textContent = monitorDisplay.textContent + whichNumber(item))
 	} else {
 		item.style.fontWeight = 800
@@ -37,7 +42,7 @@ const addToScreen = (item) => {
 		}else{
 			secondNumber = monitorDisplay.textContent
 			monitorDisplay.textContent = firstNumber = operate(firstNumber, secondNumber, 'plus')
-
+			resultFlag = true
 		}
 	}
 }
