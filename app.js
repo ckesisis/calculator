@@ -18,8 +18,6 @@ const whichSymbol = (element) => {
 	return element.id.replace('symbol_', '')
 }
 
-
-
 ourContainer.addEventListener('click', (element) => {
 	isNumber(element.target) ? (lastButtonTypeClicked = 'number') : (lastButtonTypeClicked = 'symbol')
 	addToScreen(element.target)
@@ -38,7 +36,7 @@ const addToScreen = (item) => {
 			monitorDisplay.textContent = ''
 		}else{
 			secondNumber = monitorDisplay.textContent
-			monitorDisplay.textContent = firstNumber = operate(firstNumber, secondNumber, 'subtract')
+			monitorDisplay.textContent = firstNumber = operate(firstNumber, secondNumber, 'plus')
 
 		}
 	}
@@ -55,12 +53,16 @@ const operate = (firstNumber, secondNumber, operator) => {
 	switch (operator) {
 		case 'plus':
 			result = firstNumber + secondNumber
+			break
 		case 'division':
 			result = firstNumber / secondNumber
+			break
 		case 'subtract':
 			result = firstNumber - secondNumber
+			break
 		case 'multiply':
 			result =  firstNumber * secondNumber
+			break
 		default:
 			break
 	}
